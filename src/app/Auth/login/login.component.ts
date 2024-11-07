@@ -33,9 +33,10 @@ export class LoginComponent implements OnInit {
         // this.username=payLoad['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
         // console.log(this.username);
         if (userRole == "admin") {
-          // this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/');
         }
         else {
+          localStorage.removeItem('token');
           this.router.navigateByUrl('/login');
         }
       }
@@ -53,7 +54,14 @@ export class LoginComponent implements OnInit {
   OnSubmit() {
     this.userAuthenticationService.SignIn(this.loginForm.value).subscribe(
       (res: any) => {
+        var payLoad = JSON.parse(decodeURIComponent(escape(window.atob(res!.split('.')[1]))));
+        var userId = payLoad['Id'];
+        var userName = payLoad['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+        
         localStorage.setItem('token', res);
+        localStorage.setItem('userid', userId);
+        localStorage.setItem('username', userName);
+
         console.log(res);
         this.router.navigateByUrl('/');
       },

@@ -1,0 +1,41 @@
+<div class="outline">
+    <!-- =============== Add-Search =============== -->
+    <div class="btn-container">
+        <div action="" class="search-form">
+            <input (keydown.enter)="SearchSubmit($event)" class="search-input" type="search" placeholder="Search here ..." autocomplete="off"
+            autocorrect="off" autocapitalize="off" spellcheck="false">
+            <i class="bi bi-search"></i>
+        </div>
+
+        <button class="add-btn">Add</button>
+    </div>
+
+    <!-- =============== Table =============== -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Phone number</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let admin of adminList">
+                    <td><a href="#">{{admin.id}}</a></td>
+                    <td>{{admin.name}}</td>
+                    <td>{{admin.phoneNum}}</td>
+                    <td>{{admin.email}}</td>
+                    <td class="td-status">
+                        <button (click)="DisabledAccount(admin)" class="status {{admin.disabled}}">{{admin.disabled}}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- =============== Table =============== -->
+    <div class="load-more"><button (click)="GetAdminList()">Load more...</button></div>
+</div>
