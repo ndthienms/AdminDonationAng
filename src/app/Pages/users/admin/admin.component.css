@@ -1,7 +1,3 @@
-.outline[appScroll]{
-    
-}
-
 /* =============== Add-Search =============== */
 .btn-container {
     position: relative;
@@ -184,11 +180,11 @@ table {
         transition: all .3s;
     }
 
-    a:hover{
+    a:hover {
         color: #2895cb;
     }
 
-    .td-status{
+    .td-status {
         width: 30px;
     }
 
@@ -205,11 +201,11 @@ table {
         transition: all .1s;
     }
 
-    .Disabled{
+    .Disabled {
         background-color: #fdd8cd;
     }
 
-    .status:active{
+    .status:active {
         scale: 80%;
     }
 
@@ -220,14 +216,14 @@ table {
 }
 
 /* =============== Load more =============== */
-.load-more{
+.load-more {
     display: flex;
     justify-content: end;
     margin: 20px 0;
-    
+
 }
 
-.load-more button{
+.load-more button {
     font-size: 1.2rem;
     font-weight: 400;
     color: #1d3762;
@@ -238,10 +234,317 @@ table {
     transition: all .5s;
 }
 
-.load-more button:hover{
+.load-more button:hover {
     color: #55b8e9;
 }
 
-.load-more button:active{
+.load-more button:active {
     color: #1d3762;
+}
+
+/* =============== Confirmỉmation Popup =============== */
+#confirmation {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #e3f2fd;
+}
+
+.accept-btn,
+.close-btn {
+    margin: 10px 0px 10px 10px;
+    width: 100px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    background: #bf2032;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.accept-btn:hover,
+.close-btn:hover {
+    background-color: #961221;
+}
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#confirmation.active .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 380px;
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 24px;
+    background-color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#confirmation.active .modal-box {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-box i {
+    font-size: 5rem;
+    color: #bf2032;
+}
+
+.modal-box h2 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-box h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+}
+
+/* =============== Add Form =============== */
+#add-form-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+}
+
+#add-form-container .form {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    max-width: 700px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(0);
+    overflow: auto;
+}
+
+#add-form-container.active .form {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#add-form-container .form .header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add-form-container .form .header .title {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+
+#add-form-container .form .header i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#add-form-container .form .header i:hover {
+    color: #10336b;
+}
+
+#add-form-container .form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#add-form-container .input-box label {
+    color: #333;
+}
+
+#add-form-container .form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+#add-form-container .input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+#add-form-container .form .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+#add-form-container .form .gender-box {
+    margin-top: 20px;
+}
+
+#add-form-container .gender-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+#add-form-container .form :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+
+#add-form-container .form .gender {
+    column-gap: 5px;
+}
+
+#add-form-container .gender input {
+    /* accent-color: rgb(130, 106, 251); */
+    accent-color: #1d3762;
+}
+
+#add-form-container .form :where(.gender input, .gender label) {
+    cursor: pointer;
+}
+
+#add-form-container .gender label {
+    color: #707070;
+}
+
+/* #add-form-container .address :where(input, .select-box) {
+    margin-top: 15px;
+}
+
+#add-form-container .select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+} */
+
+
+
+
+#add-form-container .form .disabled-box {
+    margin-top: 20px;
+}
+
+#add-form-container .disabled-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+#add-form-container .form :where(.disabled-option, .disabled) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+
+#add-form-container .form .disabled {
+    column-gap: 5px;
+}
+
+#add-form-container .disabled input {
+    accent-color: #1d3762;
+}
+
+#add-form-container .form :where(.disabled input, .disabled label) {
+    cursor: pointer;
+}
+
+#add-form-container .disabled label {
+    color: #707070;
+}
+
+#add-form-container .form button {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #1d3762;
+}
+
+#add-form-container .form button:hover {
+    background: #0f2343;
+}
+
+/* =============== Responsive =============== */
+@media screen and (max-width: 500px) {
+    #add-form-container .form .column {
+        flex-wrap: wrap;
+    }
+
+    #add-form-container .form :where(.gender-option, .gender) {
+        row-gap: 15px;
+    }
+}
+
+/* =============== Scroll-bar =============== */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

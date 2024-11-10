@@ -21,4 +21,16 @@ export class AccountService {
       },
     );
   }
+
+  AddAdminAccount(addForm:any) {
+    return this.http.post(this.baseUrl + '/AddAdminAccount', addForm,
+      {
+        reportProgress: true,
+        observe: 'events',
+        headers: new HttpHeaders({ 
+          'Content-Type': 'application/json' 
+      })
+      },
+    );
+  }
 }

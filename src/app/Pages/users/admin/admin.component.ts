@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../Services/admin.service';
 import { Router } from '@angular/router';
 import { HttpEventType, HttpParams } from '@angular/common/http';
-import { FormGroup } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgFor, NgIf } from '@angular/common';
 import { AccountService } from '../../../Services/account.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AccountService } from '../../../Services/account.service';
   standalone: true,
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
-  imports: [NgFor]
+  imports: [NgFor, NgIf, ReactiveFormsModule]
 })
 export class AdminComponent implements OnInit {
 
@@ -24,11 +24,14 @@ export class AdminComponent implements OnInit {
   response: any;
   request: boolean = true;
   adminList: Array<any> = [];
+  admin:any;
+  adminStatus:any;
   text: string = "";
+  addForm: FormGroup = new FormGroup({});
 
   ngOnInit(): void {
-
     this.GetAdminList();
+    this.InitAdd();
   }
 
   SearchSubmit(event: any) {
@@ -99,31 +102,100 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  DisabledAccount(admin: any) {
+  DisabledConfirmation() {
     let disabled = false;
-    if (admin.disabled == "Active") {
+    if (this.admin.disabled == "Active") {
       disabled = true;
     }
-    this.accountService.UpdateDisabledAccount(admin.phoneNum, JSON.stringify(disabled)).subscribe(
+    this.accountService.UpdateDisabledAccount(this.admin.phoneNum, JSON.stringify(disabled)).subscribe(
       (res: any) => {
         if (res.type === HttpEventType.UploadProgress) {
           console.log('Upload Progress: ' + (res.loaded / res.total * 100) + '%');
         }
         if (res.type === HttpEventType.Response) {
           if (disabled) {
-            admin.disabled = 'Disabled';
+            this.admin.disabled = 'Disabled';
           }
           else {
-            admin.disabled = 'Active';
+            this.admin.disabled = 'Active';
           }
           this.ActiveToast(true, "Your changes have been saved");
         }
+
+        let section = document.getElementById("confirmation");
+        section?.classList.remove("active")
       },
       err => {
-        this.ActiveToast(true, disabled ? "Disabled account failed" : "Active account failed");
+        this.ActiveToast(false, disabled ? "Disabled account failed" : "Active account failed");
         console.log(err);
       }
     )
+  }
+
+  private InitAdd(): void {
+    this.addForm = new FormGroup({
+      'phonenum': new FormControl(null, Validators.required),
+      'password': new FormControl(null, Validators.required),
+      'name': new FormControl(null, Validators.required),
+      'gender': new FormControl(null, Validators.required),
+      'dob': new FormControl(null, Validators.required),
+      'email': new FormControl(null, Validators.required),
+      'disabled': new FormControl(null, Validators.required)
+    });
+  }
+
+  AddSubmit() {
+    if (/[^0-9]/.test(this.addForm.value.phonenum)) {
+      this.ActiveToast(false, "Số điện thoại chỉ chứa số");
+    }
+    else {
+      this.accountService.AddAdminAccount(this.addForm.value).subscribe(
+        (res: any) => {
+          if (res.type === HttpEventType.UploadProgress) {
+            console.log('Upload Progress: ' + (res.loaded / res.total * 100) + '%');
+          }
+          if (res.type === HttpEventType.Response) {
+            this.ActiveToast(true, "Your addition have been saved");
+          }
+  
+          let section = document.getElementById("add-form-container");
+          section?.classList.remove("active")
+
+          this.InitAdd();
+        },
+        err => {
+          this.ActiveToast(false, "Your addition failed");
+          console.log(err);
+
+          this.InitAdd();
+        }
+      )
+    }
+  }
+
+  Add(){
+    let section = document.getElementById("add-form-container");
+    section?.classList.add("active");
+  }
+
+  AddClose(){
+    let section = document.getElementById("add-form-container");
+    section?.classList.remove("active");
+
+    this.InitAdd();
+  }
+
+  Confirmation(admin:any) {
+    let section = document.getElementById("confirmation");
+    section?.classList.add("active");
+
+    this.admin = admin;
+    this.admin.disabled == "Active"?this.adminStatus="disabled":this.adminStatus="avtice";
+  }
+
+  ConfirmationClose(){
+    let section = document.getElementById("confirmation");
+    section?.classList.remove("active");
   }
 
   ActiveToast(isSuccess: boolean, response: string) {
