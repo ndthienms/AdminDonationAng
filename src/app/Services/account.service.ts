@@ -15,27 +15,48 @@ export class AccountService {
       {
         reportProgress: true,
         observe: 'events',
-        headers: new HttpHeaders({ 
-          'Content-Type': 'application/json' 
-      })
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
       },
     );
   }
 
-  AddAdminAccount(addForm:any) {
+  AddAdminAccount(addForm: any) {
     return this.http.post(this.baseUrl + '/AddAdminAccount', addForm,
       {
         reportProgress: true,
         observe: 'events',
-        headers: new HttpHeaders({ 
-          'Content-Type': 'application/json' 
-      })
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
       },
     );
   }
 
-  AddOrganiserAccount(addFormData:any) {
+  AddOrganiserAccount(addFormData: any) {
     return this.http.post(this.baseUrl + '/AddOrganiserAccount', addFormData,
+      {
+        reportProgress: true,
+        observe: 'events'
+      },
+    );
+  }
+
+  AddDonorAccount(addForm: any) {
+    return this.http.post(this.baseUrl + '/AddDonorAccount', addForm,
+      {
+        reportProgress: true,
+        observe: 'events',
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      },
+    );
+  }
+
+  DeleteUncensorOrganiserAccount(phoneNum: any, organiserId: any) {
+    return this.http.delete(this.baseUrl + '/DeleteUncensorOrganiserAccount/' + phoneNum + "/" + organiserId,
       {
         reportProgress: true,
         observe: 'events'

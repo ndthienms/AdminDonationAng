@@ -23,9 +23,41 @@ export class OrganiserService {
       {
         reportProgress: true,
         observe: 'events',
-        headers: new HttpHeaders({ 
-          'Content-Type': 'application/json' 
-      })
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      },
+    );
+  }
+
+  GetAllUnCensored(pageIndex: any) {
+    return this.http.get(this.baseUrl + '/GetAllUnCensored/' + pageIndex,
+      {
+        reportProgress: true,
+        observe: 'events'
+      });
+  }
+
+  GetSearchedUncensoredList(pageIndex: any, text: any) {
+    return this.http.put(this.baseUrl + '/GetSearchedUncensoredList/' + pageIndex, text,
+      {
+        reportProgress: true,
+        observe: 'events',
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      },
+    );
+  }
+
+  UpdateApprovement(organiserId: any) {
+    return this.http.put(this.baseUrl + '/UpdateApprovement/' + organiserId,
+      {
+        reportProgress: true,
+        observe: 'events',
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
       },
     );
   }
