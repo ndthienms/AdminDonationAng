@@ -33,4 +33,13 @@ export class AccountService {
       },
     );
   }
+
+  AddOrganiserAccount(addFormData:any) {
+    return this.http.post(this.baseUrl + '/AddOrganiserAccount', addFormData,
+      {
+        reportProgress: true,
+        observe: 'events'
+      },
+    );
+  }
 }

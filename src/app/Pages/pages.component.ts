@@ -19,9 +19,6 @@ export class PagesComponent implements OnInit {
   username:any;
 
   ngOnInit(): void {
-    // if (typeof document !== 'undefined') {
-    //   this.Init();
-    // }
 
     if (typeof window !== 'undefined') {
       if (localStorage.getItem('username') != null) {
@@ -60,16 +57,4 @@ export class PagesComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
   }
-
-  // Init(){
-  //   var toastContainer = document.getElementById("toast-container");
-  //   var progress = document.getElementById("progress");
-
-  //   toastContainer?.classList.add("active")
-  //   progress?.classList.add("active")
-
-  //   setTimeout(()=>{
-  //     toastContainer?.classList.remove("active")
-  //   }, 5000)
-  // }
 }

@@ -140,13 +140,9 @@
 
 /* =============== Table =============== */
 .table-container {
-    /* display: grid;
-    justify-content: center;
-    align-items: center; */
     margin-top: 40px;
     color: #4f546c;
     font-size: 0.9rem;
-    /* background-color: #f9fbff; */
 }
 
 table {
@@ -438,7 +434,6 @@ table {
 }
 
 #add-form-container .gender input {
-    /* accent-color: rgb(130, 106, 251); */
     accent-color: #1d3762;
 }
 
@@ -449,22 +444,6 @@ table {
 #add-form-container .gender label {
     color: #707070;
 }
-
-/* #add-form-container .address :where(input, .select-box) {
-    margin-top: 15px;
-}
-
-#add-form-container .select-box select {
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    color: #707070;
-    font-size: 1rem;
-} */
-
-
-
 
 #add-form-container .form .disabled-box {
     margin-top: 20px;

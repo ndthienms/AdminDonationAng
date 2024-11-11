@@ -15,7 +15,8 @@ export class UsersComponent implements OnInit{
   constructor(private router:Router){}
 
   ngOnInit(): void {
-
+    let currentUrl = this.router.url.split("/");
+    this.ActiveLink(currentUrl[currentUrl.length - 1].toUpperCase());
   }
 
   ActiveLink(e:any){
