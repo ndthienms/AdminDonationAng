@@ -1,6 +1,3 @@
-.outline{
-    margin-top: 100px;
-}
 /* =============== Add-Search =============== */
 .btn-container {
     position: relative;
@@ -69,21 +66,19 @@
 }
 
 /* --------- Add btn ---------- */
-.filter-btn {
+.add-btn {
     margin-left: 30px;
-    padding: 10px 35px;
+    padding: 15px 35px;
     border: none;
     outline: none;
     color: #FFF;
     cursor: pointer;
     position: relative;
     z-index: 0;
-    /* border-radius: 12px; */
-    border-radius: 100%;
-    font-size: 1.5rem;
+    border-radius: 12px;
 }
 
-.filter-btn::after {
+.add-btn::after {
     content: "";
     z-index: -1;
     position: absolute;
@@ -96,7 +91,7 @@
 }
 
 /* glow */
-.filter-btn::before {
+.add-btn::before {
     content: "";
     background: linear-gradient(45deg,
             #FF0000, #FF7300, #FFFB00, #48FF00,
@@ -130,15 +125,15 @@
 }
 
 /* hover */
-.filter-btn:hover::before {
+.add-btn:hover::before {
     opacity: 1;
 }
 
-.filter-btn:active:after {
+.add-btn:active:after {
     background: transparent;
 }
 
-.filter-btn:active {
+.add-btn:active {
     color: #fff;
     font-weight: bold;
 }
@@ -148,7 +143,6 @@
     margin-top: 40px;
     color: #4f546c;
     font-size: 0.9rem;
-    overflow: auto;
 }
 
 table {
@@ -156,6 +150,7 @@ table {
     box-shadow: 0 5px 10px #e1e5ee;
     background-color: #fff;
     text-align: left;
+    overflow: hidden;
 
     thead {
         box-shadow: 0 5px 10px #e1e5ee;
@@ -172,7 +167,6 @@ table {
 
     td {
         padding: 1rem 2rem;
-        text-align: center;
     }
 
     a {
@@ -190,12 +184,11 @@ table {
         width: 30px;
     }
 
-    .status,
-    .received-status {
+    .status {
         border: none;
         outline: none;
         background: none;
-        width: 110px;
+        width: 100px;
         border-radius: .4rem;
         background-color: #d4fedc;
         padding: 0.2rem 1rem;
@@ -204,8 +197,7 @@ table {
         transition: all .1s;
     }
 
-    .Disabled,
-    .Unreceived {
+    .Disabled {
         background-color: #fdd8cd;
     }
 
@@ -331,21 +323,21 @@ table {
 }
 
 /* =============== Add Form =============== */
-#search-form-container {
+#add-form-container {
     position: fixed;
     height: 100%;
     width: 100%;
     z-index: 99999;
 }
 
-#search-form-container .form {
+#add-form-container .form {
     position: fixed;
     left: 50%;
     top: 50%;
     max-width: 700px;
     max-height: 600px;
     width: 100%;
-    height: fit-content;
+    height: 100%;
     background: #fff;
     padding: 25px;
     border-radius: 8px;
@@ -356,27 +348,27 @@ table {
     overflow: auto;
 }
 
-#search-form-container.active .form {
+#add-form-container.active .form {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
 }
 
-#search-form-container .form .header {
+#add-form-container .form .header {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#search-form-container .form .header .title {
+#add-form-container .form .header .title {
     font-size: 1.5rem;
     color: #333;
     font-weight: 500;
     text-align: center;
 }
 
-#search-form-container .form .header i {
+#add-form-container .form .header i {
     position: absolute;
     top: 0;
     right: 0;
@@ -384,20 +376,20 @@ table {
     cursor: pointer;
 }
 
-#search-form-container .form .header i:hover {
+#add-form-container .form .header i:hover {
     color: #10336b;
 }
 
-#search-form-container .form .input-box {
+#add-form-container .form .input-box {
     width: 100%;
     margin-top: 20px;
 }
 
-#search-form-container .input-box label {
+#add-form-container .input-box label {
     color: #333;
 }
 
-#search-form-container .form :where(.input-box input, .select-box) {
+#add-form-container .form :where(.input-box input, .select-box) {
     position: relative;
     height: 50px;
     width: 100%;
@@ -410,84 +402,84 @@ table {
     padding: 0 15px;
 }
 
-#search-form-container .input-box input:focus {
+#add-form-container .input-box input:focus {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-#search-form-container .form .column {
+#add-form-container .form .column {
     display: flex;
     column-gap: 15px;
 }
 
-#search-form-container .form .gender-box {
+#add-form-container .form .gender-box {
     margin-top: 20px;
 }
 
-#search-form-container .gender-box h3 {
+#add-form-container .gender-box h3 {
     color: #333;
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 8px;
 }
 
-#search-form-container .form :where(.gender-option, .gender) {
+#add-form-container .form :where(.gender-option, .gender) {
     display: flex;
     align-items: center;
     column-gap: 50px;
     flex-wrap: wrap;
 }
 
-#search-form-container .form .gender {
+#add-form-container .form .gender {
     column-gap: 5px;
 }
 
-#search-form-container .gender input {
+#add-form-container .gender input {
     accent-color: #1d3762;
 }
 
-#search-form-container .form :where(.gender input, .gender label) {
+#add-form-container .form :where(.gender input, .gender label) {
     cursor: pointer;
 }
 
-#search-form-container .gender label {
+#add-form-container .gender label {
     color: #707070;
 }
 
-#search-form-container .form .disabled-box {
+#add-form-container .form .disabled-box {
     margin-top: 20px;
 }
 
-#search-form-container .disabled-box h3 {
+#add-form-container .disabled-box h3 {
     color: #333;
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 8px;
 }
 
-#search-form-container .form :where(.disabled-option, .disabled) {
+#add-form-container .form :where(.disabled-option, .disabled) {
     display: flex;
     align-items: center;
     column-gap: 50px;
     flex-wrap: wrap;
 }
 
-#search-form-container .form .disabled {
+#add-form-container .form .disabled {
     column-gap: 5px;
 }
 
-#search-form-container .disabled input {
+#add-form-container .disabled input {
     accent-color: #1d3762;
 }
 
-#search-form-container .form :where(.disabled input, .disabled label) {
+#add-form-container .form :where(.disabled input, .disabled label) {
     cursor: pointer;
 }
 
-#search-form-container .disabled label {
+#add-form-container .disabled label {
     color: #707070;
 }
 
-#search-form-container .form button {
+#add-form-container .form button {
     height: 55px;
     width: 100%;
     color: #fff;
@@ -501,94 +493,17 @@ table {
     background: #1d3762;
 }
 
-#search-form-container .form button:hover {
+#add-form-container .form button:hover {
     background: #0f2343;
-}
-
-/* --------- Drop-down---------- */
-.dropdown{
-    position: relative;
-    margin-top: 70px;
-    margin-bottom: 30px;
-    width: 300px;height: 50px;
-    z-index: 999;
-}
-
-.dropdown::before{
-    content: '';
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1000;
-    width: 8px;
-    height: 8px;
-    border: 2px solid #333;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    transform: rotate(-45deg);
-    transition: all .5s;
-    pointer-events: none;
-}
-
-.dropdown.active::before{
-    top: 22px;
-    transform: rotate(-225deg);
-}
-
-.dropdown input{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    background: #fff;
-    border: none;
-    outline: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: 500;
-}
-
-.dropdown .option{
-    position: absolute;
-    top: 70px;
-    width: 100%;
-    background: #fff;
-    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    overflow-y: scroll;
-    height: 200px;
-    display: none;
-}
-
-.dropdown.active .option{
-    display: block;
-}
-
-.dropdown .option div{
-    padding: 12px 20px;
-    cursor: pointer;
-}
-
-.dropdown .option div:hover{
-    background: #b3d4e5;
-    color: #fff;
-}
-
-.dropdown .option div i{
-    position: relative;
-    font-size: 1.2em;
-
 }
 
 /* =============== Responsive =============== */
 @media screen and (max-width: 500px) {
-    #search-form-container .form .column {
+    #add-form-container .form .column {
         flex-wrap: wrap;
     }
 
-    #search-form-container .form :where(.gender-option, .gender) {
+    #add-form-container .form :where(.gender-option, .gender) {
         row-gap: 15px;
     }
 }
@@ -596,7 +511,6 @@ table {
 /* =============== Scroll-bar =============== */
 ::-webkit-scrollbar {
     width: 5px;
-    max-height: 7px;
 }
 
 /* Track */

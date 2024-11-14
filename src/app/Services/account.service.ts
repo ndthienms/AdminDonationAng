@@ -55,6 +55,18 @@ export class AccountService {
     );
   }
 
+  AddRecipientAccount(addForm: any) {
+    return this.http.post(this.baseUrl + '/AddRecipientAcccount', addForm,
+      {
+        reportProgress: true,
+        observe: 'events',
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      },
+    );
+  }
+
   DeleteUncensorOrganiserAccount(phoneNum: any, organiserId: any) {
     return this.http.delete(this.baseUrl + '/DeleteUncensorOrganiserAccount/' + phoneNum + "/" + organiserId,
       {

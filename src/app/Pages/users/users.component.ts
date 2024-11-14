@@ -32,6 +32,9 @@ export class UsersComponent implements OnInit{
     else if (e=="DONOR"){
       this.router.navigateByUrl('/users/donor');
     }
+    else if (e=="RECIPIENT"){
+      this.router.navigateByUrl('/users/recipient');
+    }
     else{
       this.router.navigateByUrl('/users/uncensored');
     }
