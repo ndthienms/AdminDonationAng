@@ -13,7 +13,7 @@ import { MapComponent } from './Pages/map/map.component';
 import { UncensoredComponent } from './Pages/users/uncensored/uncensored.component';
 import { RecipientComponent } from './Pages/users/recipient/recipient.component';
 
-export const routes: Routes = [
+export const routes: Routes = [{path:'map', component:MapComponent},
     {path:'', component:PagesComponent, 
         children:[
             {path:'users',component:UsersComponent,
@@ -27,9 +27,9 @@ export const routes: Routes = [
                   ]
             },
             {path:'campaign', component:CampaignComponent},
-            // {path:'transference', component:TransferenceComponent},
+            {path:'transference', component:TransferenceComponent},
             {path:'post', component:PostComponent},
-            {path:'map', component:MapComponent},
+            //{path:'map', component:MapComponent},
             {path:'', redirectTo:'users', pathMatch:'full'},
           ],
         canActivate:[AuthGuard],data:{permittedRoles:['admin']}
