@@ -10,8 +10,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes), provideClientHydration(),
-    // provideHttpClient(withFetch()),
-    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    //provideHttpClient() 
+    //provideHttpClient(withFetch()),
+    //{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     provideHttpClient(withInterceptors([AuthInterceptor]), withFetch()),
   ]
 };

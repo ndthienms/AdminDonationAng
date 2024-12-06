@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserAuthenticationService {
 
-  readonly baseUrl = 'http://localhost:5178/api/UserAuthentication';
+  readonly baseUrl = 'https://localhost:44388/api/UserAuthentication';
 
   constructor(private http: HttpClient) { }
 

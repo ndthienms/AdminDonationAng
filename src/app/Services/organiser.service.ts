@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class OrganiserService {
 
-  readonly baseUrl = 'http://localhost:5178/api/Organiser';
+  readonly baseUrl = 'https://localhost:44388/api/Organiser';
 
   constructor(private http: HttpClient) { }
 
