@@ -73,7 +73,7 @@ export class CampaignComponent implements OnInit {
   private InitSearch(): void {
     this.searchForm = new FormGroup({
       'campaign': new FormControl("", Validators.required),
-      'organiser': new FormControl("", Validators.required),
+      'user': new FormControl("", Validators.required),
       'startdate': new FormControl("", Validators.required),
       'enddate': new FormControl("", Validators.required),
       'city': new FormControl("", Validators.required),
