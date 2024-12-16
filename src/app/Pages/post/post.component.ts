@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { PostService } from '../../Services/post.service';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-post',

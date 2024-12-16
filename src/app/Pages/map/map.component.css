@@ -1,0 +1,16 @@
+.map-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+  }
+  
+  .heatmap-controls {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  #heatmap-opacity {
+    width: 300px;
+  }

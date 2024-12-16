@@ -1,4 +1,4 @@
-<div class="post-container">
+<!-- <div class="post-container">
     <h2 *ngIf="isCreateMode">Create Post</h2>
     <h2 *ngIf="!isCreateMode">Edit Post</h2>
   
@@ -19,11 +19,9 @@
     </form>
   </div>
   
-  <!-- List posts -->
   <div class="post-list">
     <h2>Post List</h2>
   
-    <!-- Search By Date -->
     <input type="date" [(ngModel)]="startDate" />
     <input type="date" [(ngModel)]="endDate" />
     <button (click)="searchPosts()">Search</button>
@@ -48,6 +46,5 @@
       </tbody>
     </table>
   
-    <!-- Pagination -->
     <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
-  </div> 
+  </div>  -->

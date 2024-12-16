@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { TransferService } from '../../Services/transfer.service';
+import { TransferService } from './transfer.service';
 
 @Component({
   selector: 'app-transference',
@@ -40,7 +40,7 @@ export class TransferenceComponent implements OnInit {
   }
 
   loadCampaigns() {
-    this.transferService.getCampaigns().subscribe((data: any[]) => {
+    this.transferService.getCampaigns().subscribe((data: any) => {
       this.campaigns = data;
     });
   }
@@ -62,7 +62,7 @@ export class TransferenceComponent implements OnInit {
 
   editTransfer(id: number) {
     this.isCreateMode = false;
-    this.transferService.getTransferById(id).subscribe((data) => {
+    this.transferService.getTransferById(id).subscribe((data:any) => {
       this.transferForm.patchValue(data);
     });
   }
