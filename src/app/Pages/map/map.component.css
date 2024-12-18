@@ -6,12 +6,13 @@
 }
 
 .control-container{
-  position: fixed;
-  bottom: 30px;
-  left: 10px;
+  position: absolute;
+  top: 70px;
+  left: 250px;
   background-color: aliceblue;
   border-radius: 20px;
-  padding: 20px;
+  padding: 5px 10px;
+  z-index: 1000;
 }
 
 .control-container .title{
@@ -22,23 +23,26 @@
 
 .control-container label {
   margin-right: 10px;
+  font-size: .7rem;
 }
 
 .control-container input{
   margin-right: 20px;
   border: none;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 7px;
+  padding: 5px;
+  font-size: .7rem;
 }
 
 .control-container button{
   outline: none;
   border: none;
   background-color: #1d3762;
-  padding: 10px;
+  padding: 7px;
   color: #fff;
   border-radius: 10px;
   cursor: pointer;
+  font-size: .7rem;
 }
 
 .control-container button:hover{
@@ -47,20 +51,4 @@
 
 .control-container button:active{
   background-color: #1d3762;
-}
-
-.heatmap-controls {
-  margin: 25px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.heatmap-controls label{
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-#heatmap-opacity {
-  width: 300px;
 }
